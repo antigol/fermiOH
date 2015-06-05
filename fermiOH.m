@@ -1,4 +1,5 @@
-# http://en.wikipedia.org/wiki/Quantum_harmonic_oscillator#N-dimensional_harmonic_oscillator
+% Pour l'OH en 3d : http://en.wikipedia.org/wiki/Quantum_harmonic_oscillator#N-dimensional_harmonic_oscillator
+% compute density in units of nu^(3/2)
 function result = fermiOH(nmax, r)
 % nu = mass omega / (2 hbar)   [m^-2]
 
@@ -8,6 +9,9 @@ function result = fermiOH(nmax, r)
 r = reshape(r, 1, numel(r));
 result = zeros(size(r));   % in units of nu^(3/2)
 
+% k = 0,1,2,3...
+% l = 0,1,2,3...
+% m = -l...+l (n'affecte pas l'énergie => déjà sommé)
 for k=0:nmax/2,
 for l=0:nmax-2*k,
 	P = LaguerreGen(k, l + 0.5);
